@@ -27,13 +27,15 @@ export default class TwitterHandle extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
+    this.props.history.push(`/parody/${this.state.handle}`);
   }
 
   render() {
     return (
       <div className="twitter-handle">
         <div className="u-page-grid">
-          <h2 className="twitter-handle__title">
+          <h2 className="title">
             What will {!!this.state.handle ? `@${this.state.handle}` : 'you'} say next?!
           </h2>
           <form className="twitter-handle__form" onSubmit={this.handleSubmit}>

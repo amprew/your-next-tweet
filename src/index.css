@@ -33,8 +33,13 @@ a {
 
 /* UTILITY CLASSES */
 .u-page-grid {
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+
+.u-text-center {
+  text-align: center !important;
 }
 
 
@@ -53,6 +58,27 @@ a {
 .app-router {
   width: 100%;
 }
+
+
+/* TITLE COMPONENT */
+.title {
+  margin: 0 0 1rem;
+
+  font-weight: inherit;
+  font-size: 1.5rem;
+}
+
+
+.title--underline::after {
+  content: "";
+
+  display: block;
+  width: 1rem;
+  margin: 1rem auto 0;
+
+  border-bottom: 1px solid white;
+}
+
 
 
 /* HEADER COMPONENT */
@@ -90,14 +116,6 @@ a {
   width: 100%;
 
   text-align: center;
-}
-
-
-.twitter-handle__title {
-  margin: 0 0 1rem;
-
-  font-weight: inherit;
-  font-size: 1.5rem;
 }
 
 
