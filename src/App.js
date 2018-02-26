@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
+import TwitterHandle from './components/TwitterHandle';
 
 class App extends Component {
   render() {
     return (
       <main className="app">
-        <h1>test</h1>
+        <Router>
+          <div className="app-router">
+            <Route exact path="/" component={TwitterHandle}></Route>
+            <Route exact path="/parody/:handle" component={()=>{}}></Route>
+          </div>
+        </Router>
       </main>
     );
   }
