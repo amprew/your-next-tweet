@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import nlp from 'compromise';
 
 import TweetList from '../components/TweetList';
+import Loader from '../components/Loader';
 
 import Tweets from '../globals/models/Tweets';
 
@@ -30,7 +31,6 @@ export default class Parody extends Component {
       })
       .then((json) => {
         this.setState({
-          loading: false,
           user: json.user
         });
 
@@ -60,7 +60,7 @@ export default class Parody extends Component {
 
         { (!this.state.loading && !!this.state.tweets.length) ?
           <TweetList tweets={this.state.tweets} user={this.state.user} /> :
-          'Loading' }
+          <Loader/> }
 
         <p class="u-text-center"><a href="/">Back to search</a></p>
       </div>
