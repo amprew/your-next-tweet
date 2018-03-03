@@ -1,67 +1,130 @@
-.tweet {
-	position: relative;
-	max-width: 35rem;
+$light-grey: rgb(225, 232, 237);
+$black: rgb(28, 32, 34);
+$grey: rgb(105, 120, 130);
+$hover-borer-color: rgb(204, 214, 221);
+$hover-background-color: #f5f8fa;
+
+/* Tweet component */
+.tweet-list {
+	display: block;
+	max-width: 800px;
 	width: 100%;
-	word-break: break-word;
-	min-height: 5rem;
-	display: flex;
-	background: white;
-	padding: 1rem;
-	box-sizing: border-box;
-	border-radius: 0.25rem;
+	margin: 0 auto;
+
+  font: 16px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.2rem;
+	color: $black;
+	-webkit-font-smoothing: antialiased;
 }
 
-.tweet__column1 {
-	height: 100%;
-	width: 50%;
-	max-width: 3rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+
+.tweet {
+  display: block;
+  margin: 0;
+  padding: 20px 20px 11.6px;
+  
+  position: relative;
+
+  background: #fff;
+  border: 1px solid rgb(225, 232, 237);
+  border-top-width: 0;
+
+  
+  &:first-child {
+    border-top-width: 1px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  
+  
+  &:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  
+  
+  &:hover {
+    border-color: $hover-borer-color;
+    background-color: $hover-background-color;
+    
+    &:not(:first-child) {
+      margin-top: -1px;
+      border-top-width: 1px;
+    }
+  }
 }
 
-.tweet__thumbnail {
-  width: 100%;
-  height: auto;
-  border-radius: 0.5rem;
+
+.tweet__main {
+  position: relative;
+  
+  padding-left: 58px;
 }
 
-.tweet__column2 {
-	flex: 1;
-	height: 100%;
-	min-height: 4rem;
-	display: flex;
-	flex-flow: column nowrap;
-	justify-content: space-between;
-	background: white;
-	padding: 0 0.5rem;
-	box-sizing: border-box;
-}
-
-.tweet__content {
-	flex: 1;
-	min-height: 1.5rem;
-	padding-bottom: 1rem;
-	background: white;
-}
 
 .tweet__header {
-	width: 50%;
+  margin-bottom: 0.25rem;
+  
+  color: inherit;
+  text-decoration: none;
+
+  white-space: nowrap;
 }
 
 
-.tweet__header-img {
-	width: 100%;
-	max-width: 14rem;
-	position: relative;
-	bottom: 2px;
-	height: auto;
-	margin-left: -1px;
+.tweet__author-avatar {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  
+  position: absolute;
+  left: 0;
+  
+  border-radius: 50%;
+  
+  overflow: hidden;
+  
+  
+  img {
+    width: 100%;
+  }
 }
 
 
-.tweet_footer {
-	width: 50%;
-	max-width: 11.5rem;
-	height: auto;
+.tweet__author-name {
+  display: inline-block;
+	margin-top: 2px;
+	margin-right: 0.5rem;
+
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+
+.tweet__author-handle {
+  display: inline-block;
+  color: $grey;
+  
+  font-size: 0.875rem;
+}
+
+
+.tweet__body {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+
+.tweet__body-text {
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+
+.tweet__timestamp {
+	margin: 0;
+
+  color: $grey;
+  font-size: 0.875rem;
+  line-height: 1.4;
 }

@@ -33,22 +33,24 @@ export default class TwitterHandle extends Component {
 
   render() {
     return (
-      <div className="twitter-handle">
-        <div className="u-page-grid">
-          <h2 className="title">
-            What will {!!this.state.handle ? `@${this.state.handle}` : 'you'} say next?!
-          </h2>
-          <form className="twitter-handle__form" onSubmit={this.handleSubmit}>
-            <span className="twitter-handle__atsymbol">@</span>
-            <input
-              type="text"
-              placeholder="Enter twitter handle here..."
-              className="input"
-              onChange={this.handleTextChange}
-              onKeyPress={this.handleKeyPress}
-              maxLength="100"
-            />
-          </form>
+      <div className="app__wrapper">
+        <div className="twitter-handle">
+          <div className="u-page-grid">
+            <h2 className="title">
+              What will {!!this.state.handle ? `@${this.state.handle}` : 'you'} say next?!
+            </h2>
+            <form className="twitter-handle__form" onSubmit={this.handleSubmit}>
+              <span className="twitter-handle__atsymbol">@</span>
+              <input
+                type="text"
+                placeholder="Enter twitter handle here..."
+                className="input"
+                onChange={this.handleTextChange}
+                onKeyPress={this.handleKeyPress}
+                maxLength="100"
+              />
+            </form>
+          </div>
         </div>
       </div>
     );

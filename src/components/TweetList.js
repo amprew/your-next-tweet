@@ -9,7 +9,9 @@ export default class TweetList extends React.Component {
 
   render() {
     return (
-      this.props.tweets.map((e, i) => <Tweet text={e} key={i} />)
+      <section className="tweet-list">
+        { this.props.tweets.map((e, i) => <Tweet text={e} user={this.props.user} key={i} />) }
+      </section>
     );
   }
 }

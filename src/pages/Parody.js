@@ -55,12 +55,14 @@ export default class Parody extends Component {
 
   render() {
     return (
-      <div className="tweet-list u-page-grid">
-        <h2 className="title title--underline u-text-center">Tweets from @{this.state.handle}</h2>
+      <div className="u-page-grid">
+        <h2 className="title title--underline u-text-center">Tweets from <a href={`//twitter.com/${this.state.handle}`}>@{this.state.handle}</a></h2>
 
         { (!this.state.loading && !!this.state.tweets.length) ?
-          <TweetList tweets={this.state.tweets} /> :
+          <TweetList tweets={this.state.tweets} user={this.state.user} /> :
           'Loading' }
+
+        <p class="u-text-center"><a href="/">Back to search</a></p>
       </div>
     );
   }

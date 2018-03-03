@@ -9,7 +9,7 @@ export default class Tweets {
           .replace(/\s\s+/g, ' ');
       });
 
-    this.getTweet = this.getTweet.bind(this);
+    this.get = this.get.bind(this);
 
     this.finalWords = [];
     this.startWords = [];

@@ -19,6 +19,7 @@ export default (req, initialState, context) => {
     <html>
       <head>
         <script data-js-intial-state>window.__APP_INITIAL_STATE__ = ${JSON.stringify(initialState)}</script>
+        <link rel="shortcut icon" href="/static/images/favicon.ico">
         <link rel="stylesheet" href="/static/css/main.css"/>
       </head>
       <body>
