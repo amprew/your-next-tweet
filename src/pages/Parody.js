@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import nlp from 'compromise';
+import Link from 'react-router-dom/Link';
 
 import TweetList from '../components/TweetList';
 import Loader from '../components/Loader';
@@ -62,7 +62,9 @@ export default class Parody extends Component {
           <TweetList tweets={this.state.tweets} user={this.state.user} /> :
           <Loader/> }
 
-        <p class="u-text-center"><a href="/">Back to search</a></p>
+        <p class="u-text-center">
+          <Link to="/">Back to search</Link>
+        </p>
       </div>
     );
   }
