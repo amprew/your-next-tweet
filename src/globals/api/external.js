@@ -17,7 +17,7 @@ export default (server) => {
     };
     client.get('statuses/user_timeline', params, function(error, tweets, response) {
       if (error) {
-        res.send([]);
+        res.send({tweets: []});
         return;
       }
 

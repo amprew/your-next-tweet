@@ -13,7 +13,8 @@ export default class Parody extends Component {
     this.state = {
       handle: this.props.match.params.handle,
       tweets: [],
-      loading: true
+      loading: true,
+      error: false
     };
 
     this.tokens = [];
@@ -30,6 +31,8 @@ export default class Parody extends Component {
         return res.json();
       })
       .then((json) => {
+        if(!!json.tweets.length) throw new Error();
+
         this.setState({
           user: json.user
         });
@@ -37,12 +40,19 @@ export default class Parody extends Component {
         return json.tweets
       })
       .then(this.processTweets)
-      .catch(()=>{});
+      .catch(() => {
+        this.setState({
+          error: true
+        });
+      });
   }
 
   processTweets(tweetsArr) {
-    //if tweets less than 20, not enough to analyse
-
+    if(tweetsArr.length < 10) {
+      return this.setState({
+        error: true
+      });
+    }
 
     const getTweets = new Tweets(tweetsArr);
     const tweets = getTweets.get(5);
@@ -56,10 +66,12 @@ export default class Parody extends Component {
   render() {
     return (
       <div className="u-page-grid">
-        <h2 className="title title--underline u-text-center">Tweets from <a href={`//twitter.com/${this.state.handle}`}>@{this.state.handle}</a></h2>
+        <h2 className="title title--underline u-text-center">Tweets from <a href={`//twitter.com/${this.state.handle}`} target="_blank">@{this.state.handle}</a></h2>
 
         { (!this.state.loading && !!this.state.tweets.length) ?
-          <TweetList tweets={this.state.tweets} user={this.state.user} /> :
+            <TweetList tweets={this.state.tweets} user={this.state.user} /> :
+          this.state.error ?
+            <p class="u-text-center">Not enough tweets to analyse</p> :
           <Loader/> }
 
         <p class="u-text-center">
