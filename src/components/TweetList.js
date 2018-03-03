@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Tweet from './Tweet';
+
 export default class TweetList extends React.Component {
   constructor(props) {
     super(props);
@@ -7,7 +9,7 @@ export default class TweetList extends React.Component {
 
   render() {
     return (
-      this.props.tweets.join('\n')
+      this.props.tweets.map((e, i) => <Tweet text={e} key={i} />)
     );
   }
 }

@@ -4,6 +4,7 @@
   "description": "Prototype for reloan flow built with Node and React",
   "main": "index.js",
   "scripts": {
+    "test": "jest",
     "clean": "rimraf ./dist",
     "watch:server": "nodemon --exec babel-node ./src/server.js",
     "build": "NODE_ENV=\"production\" webpack",
@@ -59,5 +60,8 @@
     "twitter": "^1.7.1",
     "uglifyjs-webpack-plugin": "^1.1.0",
     "webpack": "^3.8.1"
+  },
+  "devDependencies": {
+    "jest": "^22.4.2"
   }
 }

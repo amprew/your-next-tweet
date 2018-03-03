@@ -3,6 +3,8 @@ import nlp from 'compromise';
 
 import TweetList from '../components/TweetList';
 
+import Tweets from '../globals/models/Tweets';
+
 export default class Parody extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +17,6 @@ export default class Parody extends Component {
 
     this.tokens = [];
     this.processTweets = this.processTweets.bind(this);
-    this.createTokens = this.createTokens.bind(this);
   }
 
   componentDidMount() {
@@ -39,36 +40,15 @@ export default class Parody extends Component {
       .catch(()=>{});
   }
 
-  createTokens(tweets) {
-    const terms = nlp(tweets).terms().list;
+  processTweets(tweetsArr) {
+    //if tweets less than 20, not enough to analyse
 
-    for (let i = 0; i < terms.length; i++) {
-      this.tokens.push(terms[i].terms[0]._text);
-    }
-  }
 
-  findNextWord(currentWord) {
-    const nextWords = [];
-    for (let w = 0; w < this.tokens.length-1; w++) {
-      if (this.tokens[w] == currentWord) {
-        nextWords.push(this.tokens[w+1]);
-      }
-    }
-    return nextWords[Math.floor(Math.random() * nextWords.length)];
-  }
-
-  processTweets(tweets) {
-    this.createTokens(tweets.join('\r\n\r\n'));
-    let currentWord = this.tokens[Math.floor(Math.random() * this.tokens.length)];
-    let sentence = currentWord + " ";
-
-    while (sentence.length < 150) { // while we haven't found a period
-      currentWord = this.findNextWord(currentWord);
-      sentence += currentWord + " ";
-    }
+    const getTweets = new Tweets(tweetsArr);
+    const tweets = getTweets.get(5);
 
     this.setState({
-      tweets: [sentence],
+      tweets,
       loading: false
     });
   }
@@ -78,7 +58,9 @@ export default class Parody extends Component {
       <div className="tweet-list u-page-grid">
         <h2 className="title title--underline u-text-center">Tweets from @{this.state.handle}</h2>
 
-        { (!this.state.loading && !!this.state.tweets.length) ? <TweetList tweets={this.state.tweets} /> : 'Loading' }
+        { (!this.state.loading && !!this.state.tweets.length) ?
+          <TweetList tweets={this.state.tweets} /> :
+          'Loading' }
       </div>
     );
   }

@@ -10,7 +10,11 @@ export default (server) => {
       access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
     });
 
-    const params = {screen_name: req.params.handle};
+    const params = {
+      screen_name: req.params.handle,
+      include_rts: false,
+      count: 200
+    };
     client.get('statuses/user_timeline', params, function(error, tweets, response) {
       if (error) {
         res.send([]);
