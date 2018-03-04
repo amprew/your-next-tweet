@@ -4,7 +4,7 @@ const NotFound = ({staticContext = {}}) => {
   staticContext.notFound = true;
 
   return (
-    <h1 class="u-text-center">Page not found</h1>
+    <h1 className="u-text-center">Page not found</h1>
   );
 };
 

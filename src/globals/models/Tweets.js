@@ -30,8 +30,8 @@ export default class Tweets {
   createTweetData(tweet_data) {
     this.tweets.forEach((tweet) => {
       const words = tweet.trim().split(' ');
-      this.finalWords.push(words[words.length-1]);
       this.startWords.push(words[0]);
+      this.finalWords.push(words[words.length-1]);
 
       words.forEach((word, i, arr) => {
         if(typeof arr[i+1] === 'undefined') return;

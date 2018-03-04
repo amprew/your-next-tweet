@@ -31,7 +31,7 @@ export default class Parody extends Component {
         return res.json();
       })
       .then((json) => {
-        if(!!json.tweets.length) throw new Error();
+        if(!json.tweets.length) throw new Error();
 
         this.setState({
           user: json.user
@@ -40,7 +40,7 @@ export default class Parody extends Component {
         return json.tweets
       })
       .then(this.processTweets)
-      .catch(() => {
+      .catch((e) => {
         this.setState({
           error: true
         });
@@ -48,7 +48,7 @@ export default class Parody extends Component {
   }
 
   processTweets(tweetsArr) {
-    if(tweetsArr.length < 10) {
+    if(tweetsArr.length < 15) {
       return this.setState({
         error: true
       });
@@ -56,7 +56,6 @@ export default class Parody extends Component {
 
     const getTweets = new Tweets(tweetsArr);
     const tweets = getTweets.get(5);
-
     this.setState({
       tweets,
       loading: false
@@ -71,10 +70,10 @@ export default class Parody extends Component {
         { (!this.state.loading && !!this.state.tweets.length) ?
             <TweetList tweets={this.state.tweets} user={this.state.user} /> :
           this.state.error ?
-            <p class="u-text-center">Not enough tweets to analyse</p> :
+            <p className="u-text-center">Not enough tweets to analyse</p> :
           <Loader/> }
 
-        <p class="u-text-center">
+        <p className="u-text-center">
           <Link to="/">Back to search</Link>
         </p>
       </div>
