@@ -21,10 +21,8 @@ module.exports = [
         'react',
         'react-dom',
         'react-router-dom/BrowserRouter',
-        'react-router-dom/Link',
-        'redux',
-        'react-redux',
-        'redux-thunk'
+        'react-router-dom/StaticRouter',
+        'react-router-dom/Link'
       ],
       'js/bundle': [
         './src/client.js'
